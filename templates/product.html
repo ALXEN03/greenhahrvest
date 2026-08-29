@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Product Details — GreenHarvest{% endblock %}
+{% block description %}Direct-from-farm product details, harvest info, and bulk order negotiation.{% endblock %}
+
+{% block extra_head %}
+<script src="{% static 'guard.js' %}"></script>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'product.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <a href="index.html" class="back-link">← Back to Marketplace</a>
+  <div id="productDetail"><!-- injected by product.js --></div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'app.js' %}?v=1.1"></script>
+<script src="{% static 'wishlist.js' %}?v=1.1"></script>
+<script src="{% static 'product.js' %}?v=1.1"></script>
+{% endblock %}

@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Farmer Portal — GreenHarvest{% endblock %}
+{% block description %}Manage your produce listings: add new items, update stock, and remove sold-out products.{% endblock %}
+
+{% block search_bar %}{% endblock %}
+
+{% block extra_head %}
+<script src="{% static 'guard.js' %}"></script>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'farmer.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="page-title">Farmer Dashboard</h1>
+  <p class="page-subtitle">Add a new listing or manage your active produce below.</p>
+
+  <!-- ---------- Add Product Form ---------- -->
+  <section class="panel">
+    <h2 class="panel-title">Add New Product Listing</h2>
+    <form id="addProductForm" class="product-form" onsubmit="event.preventDefault(); handleAddProduct();">
+      <div class="form-group">
+        <label for="p_name">Product Name</label>
+        <input type="text" id="p_name" required placeholder="e.g. Organic Tomatoes" />
+      </div>
+
+      <div class="form-group">
+        <label for="p_category">Category</label>
+        <select id="p_category" required>
+          <option value="">Select category</option>
+          <option>Vegetables</option>
+          <option>Fruits</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="p_price">Price (₹)</label>
+        <input type="number" id="p_price" min="1" step="0.01" required placeholder="e.g. 40" />
+      </div>
+
+      <div class="form-group">
+        <label for="p_unit">Unit Type</label>
+        <select id="p_unit" required>
+          <option value="Kg">Kg</option>
+          <option value="Quintal">Quintal</option>
+          <option value="Sack">Sack</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="p_moq">Minimum Order Qty</label>
+        <input type="number" id="p_moq" min="1" value="1" required />
+      </div>
+
+      <div class="form-group">
+        <label for="p_stock">Stock Quantity</label>
+        <input type="number" id="p_stock" min="0" required placeholder="e.g. 200" />
+      </div>
+
+      <div class="form-group">
+        <label for="p_harvest">Harvest Date</label>
+        <input type="date" id="p_harvest" required />
+      </div>
+
+      <div class="form-group form-group-wide">
+        <label for="image_keyword">Product Image (Stock Search)</label>
+        <div class="image-picker-container">
+          <div class="image-search-bar">
+            <input type="text" id="image_keyword" placeholder="Search stock images (e.g., tomato, organic apple)..." />
+            <button type="button" class="btn btn-outline" id="btn_search_images">🔍 Search</button>
+          </div>
+          
+          <div class="image-gallery-grid" id="imageGalleryGrid">
+            <!-- Dynamically loaded stock thumbnails -->
+          </div>
+          
+          <div class="selected-image-preview-wrapper">
+            <input type="url" id="p_image" required placeholder="Image URL (auto-populated)" readonly />
+            <div class="preview-box">
+              <span class="preview-placeholder">No image selected</span>
+              <img id="image_preview_box" src="" alt="Selected Preview" style="display: none;" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">+ Add Listing</button>
+        <button type="reset" class="btn btn-outline">Clear</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- ---------- Listings Table ---------- -->
+  <section class="panel">
+    <h2 class="panel-title">My Active Listings</h2>
+    <div class="table-wrap">
+      <table class="listings-table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price / Unit</th>
+            <th>MOQ</th>
+            <th>Stock</th>
+            <th>Harvest</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="listingsBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ---------- Incoming Orders ---------- -->
+  <section class="panel" style="margin-top: 30px;">
+    <h2 class="panel-title">Incoming Orders for My Produce</h2>
+    <div class="table-wrap">
+      <table class="listings-table">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Buyer Details</th>
+            <th>Items Ordered</th>
+            <th>Farmer Total</th>
+            <th>Order Date</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="farmerOrdersBody">
+          <tr>
+            <td colspan="7" style="text-align:center; padding: 20px; color: var(--muted);">
+              Loading incoming orders...
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'app.js' %}?v=1.1"></script>
+<script src="{% static 'farmer.js' %}?v=1.1"></script>
+{% endblock %}

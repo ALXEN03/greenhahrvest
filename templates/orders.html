@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Orders — GreenHarvest{% endblock %}
+{% block description %}Review your past farm-fresh orders and their delivery status.{% endblock %}
+
+{% block search_bar %}{% endblock %}
+
+{% block extra_head %}
+<script src="{% static 'guard.js' %}"></script>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'orders.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="page-title">My Orders</h1>
+  <p class="page-subtitle">A complete history of every basket you've placed with our farmers.</p>
+
+  <div id="ordersRoot"><!-- injected by orders.js --></div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'app.js' %}?v=1.1"></script>
+<script src="{% static 'wishlist.js' %}?v=1.1"></script>
+<script src="{% static 'orders.js' %}?v=1.1"></script>
+{% endblock %}

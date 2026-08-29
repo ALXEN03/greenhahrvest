@@ -1,0 +1,265 @@
+/* ==========================================================================
+   Cart & Checkout — page-specific styles
+   ========================================================================== */
+
+.cart-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.cart-count-label {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.cart-panel,
+.summary-panel {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.cart-panel { padding: 6px; }
+
+/* ---------- Table ---------- */
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  table-layout: fixed;
+}
+/* Fixed column widths so all rows align in a straight grid */
+.col-item     { width: auto; }
+.col-price    { width: 130px; }
+.col-qty      { width: 150px; }
+.col-subtotal { width: 110px; }
+.col-action   { width: 60px; }
+
+.cart-table th,
+.cart-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  text-align: left;
+}
+.cart-table thead th {
+  background: var(--beige);
+  color: var(--forest);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.cart-table tbody tr:last-child td { border-bottom: none; }
+
+.cart-table .num { text-align: right; white-space: nowrap; }
+.cart-table .qty-col,
+.cart-table th.qty-col { text-align: center; }
+.cart-table .action-col,
+.cart-table th.action-col { text-align: center; }
+
+.cart-table .thumb {
+  width: 52px; height: 52px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: #f0ece0;
+  flex-shrink: 0;
+}
+.cart-table .item-cell {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-width: 0;
+}
+.cart-table .item-text { min-width: 0; }
+.cart-table .item-cell .name {
+  font-weight: 600;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cart-table .item-cell .sub {
+  font-size: 12px;
+  color: var(--muted);
+}
+.cart-table .price-cell small { color: var(--muted); font-weight: 500; }
+.cart-table .subtotal { font-weight: 700; color: var(--forest); }
+
+/* ---------- Quantity stepper — fixed width so 1 Kg / 1 Quintal align ---------- */
+.qty-mini {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  width: 150px;
+  background: #fff;
+}
+.qty-mini button {
+  background: var(--beige);
+  border: none;
+  width: 34px;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--forest);
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.qty-mini button:hover { background: #ebe4d1; }
+.qty-mini span {
+  flex: 1;
+  padding: 6px 4px;
+  text-align: center;
+  font-weight: 600;
+  background: #fff;
+  font-size: 13.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  align-self: center;
+}
+
+/* ---------- Remove (dustbin + label) ---------- */
+.remove-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  padding: 6px 4px;
+  border-radius: 6px;
+  line-height: 1;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: var(--danger);
+  font-family: inherit;
+  transition: background 120ms, border-color 120ms, transform 100ms;
+}
+.remove-btn .icon { font-size: 18px; line-height: 1; }
+.remove-btn .label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--danger);
+}
+.remove-btn:hover {
+  background: #fdecea;
+  border-color: var(--danger);
+}
+.remove-btn:active { transform: scale(0.94); }
+
+/* ---------- Summary ---------- */
+.summary-panel { padding: 20px; position: sticky; top: 84px; }
+.summary-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 14px;
+  color: var(--ink);
+}
+.summary-row.muted { color: var(--muted); font-size: 13px; }
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--forest);
+}
+.cod-note {
+  background: var(--beige);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  color: var(--muted);
+  margin: 12px 0;
+}
+
+/* ---------- Success ---------- */
+.success-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--forest);
+  border-radius: var(--radius);
+  padding: 40px 24px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  max-width: 520px;
+  margin: 0 auto;
+}
+.success-icon {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--forest);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin-bottom: 14px;
+}
+.success-card h2 { color: var(--forest); font-size: 22px; margin-bottom: 6px; }
+.success-card p { color: var(--muted); margin-bottom: 6px; font-size: 14px; }
+.success-card .order-id {
+  font-family: 'Menlo', 'Consolas', monospace;
+  background: var(--beige);
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  margin: 8px 0 20px;
+  color: var(--ink);
+  font-size: 13px;
+}
+
+@media (max-width: 860px) {
+  .cart-layout { grid-template-columns: 1fr; }
+  .summary-panel { position: static; }
+  .cart-table th,
+  .cart-table td { padding: 12px 8px; }
+  .qty-mini { width: 130px; }
+  .qty-mini button { width: 30px; }
+}
+
+@media (max-width: 480px) {
+  .cart-table th,
+  .cart-table td { padding: 10px 6px; font-size: 13px; }
+  .cart-table .thumb { width: 42px; height: 42px; }
+  .item-cell { gap: 8px; }
+  .col-price { width: 100px; }
+  .col-subtotal { width: 90px; }
+  .col-action { width: 52px; }
+  .qty-mini { width: 110px; }
+  .qty-mini button { width: 26px; }
+}

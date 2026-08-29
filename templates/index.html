@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Marketplace — GreenHarvest{% endblock %}
+{% block description %}Buy fresh produce directly from local farmers. No middlemen, fair prices, and traceable harvests.{% endblock %}
+
+{% block extra_head %}
+<script src="{% static 'guard.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="page-title">Fresh from the Farm</h1>
+  <p class="page-subtitle">Sourced directly from verified farmers across the region.</p>
+
+  <!-- Category Filter Pills -->
+  <div class="category-pills" id="categoryPills">
+    <button class="pill active" data-category="All">All</button>
+    <button class="pill" data-category="Vegetables">Vegetables</button>
+    <button class="pill" data-category="Fruits">Fruits</button>
+  </div>
+
+  <!-- Sort + Filter Toolbar -->
+  <div class="filter-bar">
+    <div class="filter-group">
+      <label for="sortSelect">Sort</label>
+      <select id="sortSelect" class="filter-select">
+        <option value="featured">Featured</option>
+        <option value="price-asc">Price: Low → High</option>
+        <option value="price-desc">Price: High → Low</option>
+        <option value="freshness">Freshest Harvest</option>
+        <option value="name">Name: A → Z</option>
+      </select>
+    </div>
+    <div class="filter-group range-group">
+      <label for="priceRange">Max Price: <span id="priceRangeLabel">Any</span></label>
+      <input type="range" id="priceRange" min="30" max="6000" step="10" value="6000" />
+    </div>
+    <div class="filter-spacer"></div>
+    <div class="result-count" id="resultCount">—</div>
+    <button class="btn btn-outline btn-sm" onclick="clearAllFilters()">Clear</button>
+  </div>
+
+  <!-- Product Grid -->
+  <section class="product-grid" id="productGrid"></section>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'app.js' %}?v=1.1"></script>
+<script src="{% static 'wishlist.js' %}?v=1.1"></script>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Your Cart — GreenHarvest{% endblock %}
+{% block description %}Review your farm-fresh order and check out with Cash on Delivery.{% endblock %}
+
+{% block search_bar %}{% endblock %}
+
+{% block extra_head %}
+<script src="{% static 'guard.js' %}"></script>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'cart.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="page-title">Your Cart</h1>
+  <p class="page-subtitle">Review your items before placing the order.</p>
+
+  <div id="cartRoot"><!-- injected by cart.js --></div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'app.js' %}?v=1.1"></script>
+<script src="{% static 'wishlist.js' %}?v=1.1"></script>
+<script src="{% static 'cart.js' %}?v=1.1"></script>
+{% endblock %}

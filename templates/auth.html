@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sign In — GreenHarvest{% endblock %}
+{% block description %}Sign in or create an account on GreenHarvest — the farm-direct marketplace.{% endblock %}
+
+{% block search_bar %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'auth.css' %}" />
+{% endblock %}
+
+{% block content %}
+<main class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login" onclick="switchTab('login')">Sign In</button>
+      <button class="auth-tab" data-tab="signup" onclick="switchTab('signup')">Create Account</button>
+    </div>
+
+    <!-- ---------- LOGIN ---------- -->
+    <form id="loginForm" class="auth-form" onsubmit="event.preventDefault(); handleLogin();">
+      <h1 class="auth-title">Welcome back</h1>
+      <p class="auth-subtitle">Sign in to buy fresh produce or manage your farm listings.</p>
+
+      <div class="form-group">
+        <label for="l_email">Email</label>
+        <input type="email" id="l_email" required placeholder="you@example.com" />
+      </div>
+      <div class="form-group">
+        <label for="l_password">Password</label>
+        <input type="password" id="l_password" required placeholder="Your password" />
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+    </form>
+
+    <!-- ---------- SIGNUP ---------- -->
+    <form id="signupForm" class="auth-form hidden" onsubmit="event.preventDefault(); handleSignup();">
+      <h1 class="auth-title">Create your account</h1>
+      <p class="auth-subtitle">Join as a buyer or a farmer.</p>
+
+      <div class="role-toggle">
+        <label class="role-opt">
+          <input type="radio" name="role" value="BUYER" checked />
+          <span>🛒 I'm a Buyer</span>
+        </label>
+        <label class="role-opt">
+          <input type="radio" name="role" value="FARMER" />
+          <span>🌱 I'm a Farmer</span>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="s_name">Full Name</label>
+        <input type="text" id="s_name" required placeholder="Your name" />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="s_email">Email</label>
+          <input type="email" id="s_email" required placeholder="you@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="s_phone">Phone</label>
+          <input type="tel" id="s_phone" required placeholder="919812345678" pattern="[0-9]{10,15}" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="s_location">Location</label>
+        <input type="text" id="s_location" required placeholder="City, State" />
+      </div>
+      <div class="form-group">
+        <label for="s_password">Password</label>
+        <input type="password" id="s_password" required minlength="6" placeholder="At least 6 characters" />
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+    </form>
+  </div>
+</main>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'auth.js' %}?v=1.1"></script>
+{% endblock %}

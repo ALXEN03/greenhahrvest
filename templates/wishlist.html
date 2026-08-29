@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Wishlist — GreenHarvest{% endblock %}
+{% block description %}Products you've saved for later on GreenHarvest.{% endblock %}
+
+{% block search_bar %}{% endblock %}
+
+{% block extra_head %}
+<script src="{% static 'guard.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="page-title">My Wishlist <span class="title-heart" aria-hidden="true">🤍</span></h1>
+  <p class="page-subtitle">Products you've saved for later.</p>
+  <div id="wishlistRoot"></div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'app.js' %}?v=1.1"></script>
+<script src="{% static 'wishlist.js' %}?v=1.1"></script>
+{% endblock %}

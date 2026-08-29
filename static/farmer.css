@@ -1,0 +1,177 @@
+/* ==========================================================================
+   Farmer Portal — page-specific styles
+   ========================================================================== */
+
+.panel {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+}
+.panel-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---------- Form ---------- */
+.product-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px 16px;
+}
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-group-wide { grid-column: 1 / -1; }
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.form-group input,
+.form-group select {
+  padding: 9px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-family: inherit;
+  background: #fff;
+  color: var(--ink);
+  outline: none;
+}
+.form-group input:focus,
+.form-group select:focus { border-color: var(--forest); }
+
+.form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+/* ---------- Listings Table ---------- */
+.table-wrap { overflow-x: auto; }
+.listings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 780px;
+}
+.listings-table th,
+.listings-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: middle;
+}
+.listings-table thead th {
+  background: var(--beige);
+  color: var(--forest);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.listings-table tbody tr:hover { background: #fbf9f2; }
+.listings-table .thumb {
+  width: 44px; height: 44px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+.listings-table .row-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.listings-table .row-actions .btn {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+.empty-row td {
+  text-align: center;
+  color: var(--muted);
+  padding: 30px 20px;
+  font-style: italic;
+}
+
+/* ---------- Stock Image Picker ---------- */
+.image-picker-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #fdfdfd;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-top: 4px;
+}
+.image-search-bar {
+  display: flex;
+  gap: 8px;
+}
+.image-search-bar input {
+  flex: 1;
+}
+.image-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.gallery-thumb {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  background: #f0f0f0;
+  transition: all 0.2s ease-in-out;
+}
+.gallery-thumb:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-color: rgba(46, 125, 50, 0.4);
+}
+.gallery-thumb.selected {
+  border-color: var(--forest);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+  transform: scale(1.02);
+}
+.selected-image-preview-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 140px;
+  gap: 16px;
+  align-items: center;
+  margin-top: 8px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+.preview-box {
+  width: 140px;
+  height: 105px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9;
+  position: relative;
+}
+.preview-placeholder {
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  padding: 8px;
+}
+.preview-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+

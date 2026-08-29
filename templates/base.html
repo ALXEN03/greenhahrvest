@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}GreenHarvest — Farm-Fresh, Direct from the Field{% endblock %}</title>
+  <meta name="description" content="{% block description %}A direct-to-consumer farm marketplace connecting local farmers with consumers.{% endblock %}" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="{% static 'style.css' %}" />
+  <link rel="stylesheet" href="{% static 'toast.css' %}" />
+  {% block extra_css %}{% endblock %}
+  
+  <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
+  
+  {% block extra_head %}{% endblock %}
+  <script src="{% static 'toast.js' %}"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo">
+        <span class="logo-mark">G</span> <span class="logo-text">GreenHarvest</span>
+      </a>
+
+      {% block search_bar %}
+      <form class="search-bar" id="searchForm" onsubmit="event.preventDefault(); handleSearchFormSubmit();">
+        <input type="text" id="searchInput" placeholder="Search tomatoes, mangoes, wheat..." />
+        <button type="submit">Search</button>
+      </form>
+      {% endblock %}
+
+      <div class="header-actions">
+        <a class="cart-btn" href="wishlist.html" id="wishLink">
+          <span class="ico-heart" aria-hidden="true">♡</span> Wishlist 
+          <span class="cart-count" id="wishCount">0</span>
+        </a>
+        <a class="cart-btn" href="orders.html" id="ordersLink">📦 My Orders</a>
+        <button class="cart-btn" onclick="window.location.href='cart.html';" id="cartLink" type="button">
+          🛒 My Cart <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    © 2026 GreenHarvest — Empowering farmers, feeding communities.
+  </footer>
+
+  <script src="{% static 'session.js' %}?v=1.1"></script>
+  <script>
+    function handleSearchFormSubmit() {
+      const query = document.getElementById('searchInput').value.trim();
+      if (typeof handleSearch === 'function') {
+        handleSearch(query);
+      } else {
+        window.location.href = 'index.html?q=' + encodeURIComponent(query);
+      }
+    }
+  </script>
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>
